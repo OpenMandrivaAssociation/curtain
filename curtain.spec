@@ -7,7 +7,7 @@ URL:		http://code.google.com/p/ardesia
 Group:		Education
 License:	GPL
 BuildRequires:	gcc make automake libtool
-BuildRequires:	freetype
+BuildRequires:	freetype intltool
 Requires:	freetype
 
 
