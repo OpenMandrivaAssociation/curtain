@@ -1,14 +1,14 @@
 Name:		curtain
 Summary:	Resizable curtain on the desktop screen
 Version:	0.3
-Release:	%mkrel 1
+Release:	3
 Source0:	http://ardesia.googlecode.com/files/%{name}-%{version}.tar.gz
 URL:		http://code.google.com/p/ardesia
 Group:		Education
 License:	GPLv3
 BuildRequires:	gcc make automake libtool
 BuildRequires:	freetype intltool
-BuildRequires:	gtk+3-devel
+BuildRequires:	pkgconfig(gtk+-3.0)
 Requires:	freetype gtk+2.0
 
 
@@ -22,7 +22,7 @@ This program has been implemented for educational purposes
 %setup -q
 
 %build
-%configure2_5x
+%configure
 %make
 
 %install
