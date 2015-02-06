@@ -1,7 +1,7 @@
 Name:		curtain
 Summary:	Resizable curtain on the desktop screen
 Version:	0.3
-Release:	3
+Release:	4
 Source0:	http://ardesia.googlecode.com/files/%{name}-%{version}.tar.gz
 URL:		http://code.google.com/p/ardesia
 Group:		Education
