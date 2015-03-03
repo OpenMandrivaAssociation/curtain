@@ -1,41 +1,54 @@
+Summary:	Show a movable and resizable curtain on the desktop screen
 Name:		curtain
-Summary:	Resizable curtain on the desktop screen
 Version:	0.3
-Release:	%mkrel 1
-Source0:	http://ardesia.googlecode.com/files/%{name}-%{version}.tar.gz
-URL:		http://code.google.com/p/ardesia
+Release:	1.1
+License:	GPLv3+
 Group:		Education
-License:	GPLv3
-BuildRequires:	gcc make automake libtool
-BuildRequires:	freetype intltool
-BuildRequires:	gtk+3-devel
-Requires:	freetype gtk+2.0
-
+Url:		http://code.google.com/p/ardesia
+Source:		http://ardesia.googlecode.com/files/%{name}-%{version}.tar.gz
+Patch0:		curtain-desktop-file.patch
+Patch1:		curtain-0.3-gtk3tests.patch
+BuildRequires:	desktop-file-utils
+BuildRequires:	intltool
+BuildRequires:	libtool
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 
 %description
-Curtain is a tool that show a movable and resizable curtain
-on the desktop screen
-You can use this to hide and show objects on the desktop
-This program has been implemented for educational purposes
+Curtain is a tool that show a movable and resizable curtain on the desktop
+screen. You can use this to hide and show objects on the desktop.
+
+This program has been implemented for educational purposes.
+
+%files -f %{name}.lang
+%doc COPYING README NEWS ChangeLog AUTHORS
+%{_bindir}/curtain
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/%{name}/ui/%{name}.glade
+%{_datadir}/%{name}/ui/icons/%{name}.*
+%{_iconsdir}/%{name}.*
+%{_datadir}/pixmaps/%{name}.*
+%{_mandir}/man1/%{name}.1.*
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q
+%patch0 -p0
+%patch1 -p1 -b .gtk3tests
 
 %build
+autoreconf -fi
 %configure2_5x
 %make
 
 %install
-%makeinstall_std XDG_UTILS=""
+%makeinstall_std
+
+install -d -m 755 %{buildroot}%{_datadir}/pixmaps
+mv %{buildroot}%{_iconsdir}/%{name}.xpm %{buildroot}%{_datadir}/pixmaps/
+
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+
 %find_lang %{name}
 
-%files -f %{name}.lang
-%doc AUTHORS README COPYING NEWS
-%{_bindir}/%name
-%{_datadir}/%{name}/ui/*.glade
-%{_datadir}/%{name}/ui/icons/*
-%{_datadir}/icons/%name.xpm
-%{_datadir}/icons/%name.ico
-%{_datadir}/applications/%name.desktop
-#% {_datadir}/locale/*
-%{_mandir}/man1/%name.*

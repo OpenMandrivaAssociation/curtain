@@ -1,0 +1,19 @@
+--- curtain.desktop.in.orig	2011-12-23 13:39:03.755469729 +0100
++++ desktop/curtain.desktop.in	2011-12-23 13:40:48.514784094 +0100
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Version=0.2
+ Type=Application
+ Name=Curtain
+ GenericName=Show and move a curtain 
+@@ -8,8 +7,7 @@
+ Comment[es]=Muestra y mueve una cortina sobre el escritorio
+ Exec=curtain %U
+ TryExec=curtain
+-Icon=curtain.png
++Icon=curtain
+ Terminal=false
+-Categories=GTK;Utility;Accessibility
++Categories=Utility;Accessibility;
+ StartupNotify=true
+-Encoding=UTF-8
