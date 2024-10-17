@@ -4,7 +4,7 @@ Version:	0.3
 Release:	4
 License:	GPLv3+
 Group:		Education
-Url:		http://code.google.com/p/ardesia
+Url:		https://code.google.com/p/ardesia
 Source:		http://ardesia.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		curtain-desktop-file.patch
 Patch1:		curtain-0.3-gtk3tests.patch
